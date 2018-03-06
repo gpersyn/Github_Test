@@ -64,11 +64,16 @@ void CHello_WorldView::OnDraw(CDC* pDC)
 		return;
 
 	// TODO: add draw code for native data here 
-	pDC->TextOutW(600,400, _T("Hello World!"));
+	//pDC->TextOutW(600,400, _T("Hello World!"));
+	
+
 	if (m_drawCirle)
 		pDC->Ellipse(100, 100, 300, 300);
 	else
 		pDC->Rectangle(100,100,400,600);
+
+	pDC->Rectangle(490, 90, 800, 125);
+	pDC->TextOutW(500, 100, pDoc->GetTxt());
 }
 
 

@@ -194,6 +194,7 @@
     <ClInclude Include="Hello_WorldView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SetTxtDlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -202,6 +203,7 @@
     <ClCompile Include="Hello_WorldDoc.cpp" />
     <ClCompile Include="Hello_WorldView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="SetTxtDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -16,20 +16,24 @@
 #define IDR_MAINFRAME_256               129
 #define IDR_Hello_WorldTYPE             130
 #define IDS_EDIT_MENU                   306
+#define IDD_DIALOG1                     312
+#define IDC_EDIT_Txt                    1000
 #define ID_FILE_RANDOMBUTTON            32771
 #define ID_RANDOMBUTTON_ANOTHER         32772
 #define ID_RANDOMBUTTON_RANDOM          32773
 #define ID_RANDOMBUTTON_BUTTON          32774
 #define ID_DRAW_CIRCLE                  32775
 #define ID_DRAW_RECTANGLE               32776
+#define ID_DRAW_CHANGETEXT              32777
+#define ID_DRAW_TEST                    32778
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        311
-#define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_RESOURCE_VALUE        314
+#define _APS_NEXT_COMMAND_VALUE         32779
+#define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

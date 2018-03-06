@@ -29,6 +29,8 @@ public:
 
 // Implementation
 public:
+	CString GetTxt() { return m_txt;  } //Get function for m_txt since its private
+
 	virtual ~CHello_WorldDoc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -45,4 +47,9 @@ protected:
 	// Helper function that sets search content for a Search Handler
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
+public:
+	afx_msg void OnDrawChangetext();
+
+private: 
+	CString m_txt;
 };

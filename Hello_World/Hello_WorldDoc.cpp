@@ -10,6 +10,7 @@
 #endif
 
 #include "Hello_WorldDoc.h"
+#include "SetTxtDlg.h"
 
 #include <propkey.h>
 
@@ -22,6 +23,7 @@
 IMPLEMENT_DYNCREATE(CHello_WorldDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CHello_WorldDoc, CDocument)
+	ON_COMMAND(ID_DRAW_CHANGETEXT, &CHello_WorldDoc::OnDrawChangetext)
 END_MESSAGE_MAP()
 
 
@@ -44,6 +46,7 @@ BOOL CHello_WorldDoc::OnNewDocument()
 
 	// TODO: add reinitialization code here
 	// (SDI documents will reuse this document)
+	m_txt.Empty();
 
 	return TRUE;
 }
@@ -58,10 +61,13 @@ void CHello_WorldDoc::Serialize(CArchive& ar)
 	if (ar.IsStoring())
 	{
 		// TODO: add storing code here
+		ar << m_txt;
+		SetModifiedFlag(false);
 	}
 	else
 	{
 		// TODO: add loading code here
+		ar >> m_txt;
 	}
 }
 
@@ -135,3 +141,17 @@ void CHello_WorldDoc::Dump(CDumpContext& dc) const
 
 
 // CHello_WorldDoc commands
+
+
+void CHello_WorldDoc::OnDrawChangetext()
+{
+	// TODO: Add your command handler code here
+	CSetTxtDlg dlg_SetTxt;
+	//DdModal is on top of everything. Have to press cancle or ok
+	if (dlg_SetTxt.DoModal() == IDOK ) { //If user presses ok
+		//m_txt happen to have the same name but they are different variables
+		m_txt = dlg_SetTxt.m_txt; //store value read from text box into document
+		UpdateAllViews(NULL); //Redraws window
+		SetModifiedFlag(true);
+	}
+}
