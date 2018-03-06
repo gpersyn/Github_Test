@@ -4,6 +4,7 @@
 
 #pragma once
 
+constexpr UINT IDC_BUTTON1{ 101 };
 
 class CHello_WorldView : public CView
 {
@@ -48,11 +49,13 @@ public:
 
 private:
 	bool m_drawCirle{true}; //If not circle then rectangle
+	CButton m_button;
 
 public:
 	afx_msg void OnDrawRectangle();
 	afx_msg void OnUpdateDrawCircle(CCmdUI *pCmdUI);
 	afx_msg void OnUpdateDrawRectangle(CCmdUI *pCmdUI);
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
 
 #ifndef _DEBUG  // debug version in Hello_WorldView.cpp

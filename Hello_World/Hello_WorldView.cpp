@@ -32,6 +32,7 @@ BEGIN_MESSAGE_MAP(CHello_WorldView, CView)
 	ON_COMMAND(ID_DRAW_RECTANGLE, &CHello_WorldView::OnDrawRectangle)
 	ON_UPDATE_COMMAND_UI(ID_DRAW_CIRCLE, &CHello_WorldView::OnUpdateDrawCircle)
 	ON_UPDATE_COMMAND_UI(ID_DRAW_RECTANGLE, &CHello_WorldView::OnUpdateDrawRectangle)
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 // CHello_WorldView construction/destruction
@@ -170,4 +171,17 @@ void CHello_WorldView::OnUpdateDrawRectangle(CCmdUI *pCmdUI)
 {
 	// TODO: Add your command update UI handler code here
 	pCmdUI->Enable(m_drawCirle);
+}
+
+
+int CHello_WorldView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CView::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// TODO:  Add your specialized creation code here
+	m_button.Create(_T("Press Me!"), BS_PUSHBUTTON, CRect(600, 200, 700, 250), this, IDC_BUTTON1);
+	m_button.ShowWindow(SW_SHOW);
+
+	return 0;
 }
