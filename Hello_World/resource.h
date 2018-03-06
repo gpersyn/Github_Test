@@ -26,13 +26,15 @@
 #define ID_DRAW_RECTANGLE               32776
 #define ID_DRAW_CHANGETEXT              32777
 #define ID_DRAW_TEST                    32778
+#define ID_BUTTON32779                  32779
+#define ID_BUTTON_MOVE                  32779
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        314
-#define _APS_NEXT_COMMAND_VALUE         32779
+#define _APS_NEXT_COMMAND_VALUE         32780
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

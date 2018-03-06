@@ -43,6 +43,7 @@ protected:
 	afx_msg void OnFilePrintPreview();
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
+	afx_msg void OnButton1Clicked();
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnDrawCircle();
@@ -50,12 +51,17 @@ public:
 private:
 	bool m_drawCirle{true}; //If not circle then rectangle
 	CButton m_button;
+	bool m_redBackCol{ false }; //Red background color if true
+
+	bool m_followMouse{ false }; //button follows the mouse
 
 public:
 	afx_msg void OnDrawRectangle();
 	afx_msg void OnUpdateDrawCircle(CCmdUI *pCmdUI);
 	afx_msg void OnUpdateDrawRectangle(CCmdUI *pCmdUI);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnButtonMove();
 };
 
 #ifndef _DEBUG  // debug version in Hello_WorldView.cpp

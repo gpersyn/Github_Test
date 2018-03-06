@@ -33,6 +33,9 @@ BEGIN_MESSAGE_MAP(CHello_WorldView, CView)
 	ON_UPDATE_COMMAND_UI(ID_DRAW_CIRCLE, &CHello_WorldView::OnUpdateDrawCircle)
 	ON_UPDATE_COMMAND_UI(ID_DRAW_RECTANGLE, &CHello_WorldView::OnUpdateDrawRectangle)
 	ON_WM_CREATE()
+	ON_BN_CLICKED(IDC_BUTTON1, OnButton1Clicked)//message for Button 1
+	ON_WM_MOUSEMOVE()
+	ON_COMMAND(ID_BUTTON_MOVE, &CHello_WorldView::OnButtonMove)
 END_MESSAGE_MAP()
 
 // CHello_WorldView construction/destruction
@@ -66,7 +69,12 @@ void CHello_WorldView::OnDraw(CDC* pDC)
 
 	// TODO: add draw code for native data here 
 	//pDC->TextOutW(600,400, _T("Hello World!"));
-	
+	CRect rectClient;
+	GetClientRect(rectClient);
+	if (m_redBackCol) {
+		pDC->FillSolidRect(rectClient,RGB(255,0,0));
+	}
+
 
 	if (m_drawCirle)
 		pDC->Ellipse(100, 100, 300, 300);
@@ -180,8 +188,42 @@ int CHello_WorldView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 
 	// TODO:  Add your specialized creation code here
-	m_button.Create(_T("Press Me!"), BS_PUSHBUTTON, CRect(600, 200, 700, 250), this, IDC_BUTTON1);
+	m_button.Create(_T("RED"), BS_PUSHBUTTON, CRect(600, 200, 700, 250), this, IDC_BUTTON1);
 	m_button.ShowWindow(SW_SHOW);
 
 	return 0;
+}
+
+void CHello_WorldView::OnButton1Clicked() {
+	if (m_followMouse) {
+		m_followMouse = false;
+	}
+	else {
+		m_redBackCol = !m_redBackCol;
+		if (m_redBackCol)
+			m_button.SetWindowTextW(L"WHITE");
+		else
+			m_button.SetWindowTextW(L"RED");
+		Invalidate();
+		UpdateWindow();
+	}
+}
+
+void CHello_WorldView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	if (m_followMouse) {
+		CRect rectButton;
+		m_button.GetWindowRect(rectButton);// this is cords of computer window not client window
+		ScreenToClient(rectButton);//modifies rectaclge so cords are in relation to client
+		//point is cords of mouse pointer
+		m_button.MoveWindow(point.x, point.y, rectButton.Width(), rectButton.Height());//moves window to mouse pointer and keep its current size
+	}
+
+	CView::OnMouseMove(nFlags, point);
+}
+
+
+void CHello_WorldView::OnButtonMove()
+{
+	m_followMouse = true;
 }
